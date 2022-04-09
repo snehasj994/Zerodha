@@ -1,0 +1,60 @@
+package pom;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
+public class Signup_pom {
+	@FindBy(xpath="//input[@name=\"firstname\"]")private WebElement fname;
+	@FindBy(xpath="//input[@name=\"lastname\"]")private WebElement lname;
+	@FindBy(xpath="//input[@name=\"reg_email__\"]")private WebElement email;
+	@FindBy(xpath="//input[@name=\"reg_passwd__\"]")private WebElement passwd;
+	@FindBy(xpath="//select[@name=\"birthday_day\"]")private WebElement bday;
+	@FindBy(xpath="//select[@name=\"birthday_month\"]")private WebElement month;
+	@FindBy(xpath="//select[@name=\"birthday_year\"]")private WebElement year;
+	@FindBy(xpath="//input[@type=\"radio\"][1]")private WebElement radiobtn;
+	@FindBy(xpath="//button[@type=\"submit\"]")private WebElement signup;
+	
+	Signup_pom(WebDriver dd){
+		PageFactory.initElements(dd, this);
+	}
+	public void enterfname(String name) {
+		fname.sendKeys(name);
+	}
+	public void enterLname(String lastname) {
+		lname.sendKeys(lastname);
+	}
+	public void enteremail(String emailId) {
+		email.sendKeys(emailId);
+	}
+	public void enternewpass(String pass) {
+		passwd.sendKeys(pass);
+	}
+	public void selectdate(String day) {
+		Select s1=new Select(bday);
+		s1.selectByVisibleText(day);
+		}
+	public void selectmonth(String mon) {
+		Select s2=new Select(month);
+		s2.selectByValue(mon);
+	//s2.selectByVisibleText(mon);
+	}
+	public void selectyear(String yr) {
+		Select s3=new Select(year);
+		s3.selectByVisibleText(yr);
+		}
+	
+	
+	public void radioclick() {
+	radiobtn.click();	
+	}
+	public void clicksignup() {
+		signup.click();
+	}
+	
+	
+	
+	
+}
